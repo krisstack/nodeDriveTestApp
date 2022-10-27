@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Provinence Driving Test </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+    const onChangeDate= async (event) => {
+        
+$(`.selectSlot`).prop("disabled", false);
+$.get(`slotGetDate?Date=${event.target.value}`, function (data) {
+    
+  if (data && data.length > 0) {
+    
+    for (const iterator of data) {
+      let slot = iterator.Time;
+      slot = slot.replace(":00", "F");
+      slot = slot.replace(":30", "H");
+      $(`#${slot}`).prop("disabled", true);
+    }
+  }
+});
+};
+</script>
+</head>
+<body>
+ 
+    
+        <div style="background-color:powderblue ; width: auto;text-align: center;color:r;">
+            <header>
+                <h1>WELCOME TO ONTARIO DRIVING TEST CENTRE</h1>
+                <%- include('partials/navbar') %>
+            </header>
+        </div>
+           
+<div style="background-color: burlywood;width:auto;height:auto;padding-top:20px;padding-bottom:30px ;"> 
+    <h1 style="text-align: center;"> Booking For G2 Test </h1>
+    <form action="/update/g2" style="margin-left: 30%;margin-top: 7%;" method="post"> 
+        <div style="padding-bottom: 4%;">
+            <label>First Name :-</label>
+            <input type="text" name="fName"/>
+            <label style="padding-left:5%;">Address :-</label>
+            <input type="text" name="address"/><br/>
+        </div>
+        <div style="padding-bottom: 4%;">
+            <label>Last Name :-</label>
+            <input type="text" name="lName"/>
+            <label style="padding-left:5%;">DOB :-</label>
+            <input type="date" name="dob"/>
+        </div>
+        <div style="padding-bottom: 5%;">
+            <label>User ID :-</label>
+            <input type="text" name="userId"/>
+            <label style="padding-left:7%;">Licence Number :-</label>
+            <input type="text" name="lNum"/>
+        </div>
+        <div>
+            <label>Car Details :-</label>
+            <input type="text" name="carDetails"/>
+        </div>
+        <div style="margin-bottom: 3%">
+          <label>Date ></label>
+          <input
+            type="date"
+            name="Date"
+            id="datePicker"
+            autofocus
+            required
+            onchange="onChangeDate(event)"
+          />
+        </div>
+        <div style="margin-bottom: 2%; margin-top: 2%">
+          <label>Slot></label>
+          <select name="Time" type="text" id="slot">
+            <option selected disabled>Slots</option>
+            <option id="9F" class="selectSlot" value="9:00">9:00 AM</option>
+            <option id="9H" class="selectSlot" value="9:30">9:30 AM</option>
+            <option id="10F" class="selectSlot" value="10:00">
+              10:00 AM
+            </option>
+            <option id="10H" class="selectSlot" value="10:30">
+              10:30 AM
+            </option>
+            <option id="11F" class="selectSlot" value="11:00">
+              11:00 AM
+            </option>
+            <option id="11H" class="selectSlot" value="11:30">
+              11:30 AM
+            </option>
+            <option id="12F" class="selectSlot" value="12:00">
+              12:00 PM
+            </option>
+            <option id="12H" class="selectSlot" value="12:30">
+              12:30 PM
+            </option>
+            <option id="1F" class="selectSlot" value="1:00">1:00 PM</option>
+            <option id="1H" class="selectSlot" value="1:30">1:30 PM</option>
+            <option id="2F" class="selectSlot" value="2:00">2:00 PM</option>
+          </select>
+        </div>
+   <input type="hidden" name="appointmentId"/>
+   
+
+        </div>
+        <button type="submit" style="margin-left: 30%;margin-top: 5%;">Save</button>
+    </form>
+</div>
+    <div>
+        <form action="/post/image1" method="post" enctype="multipart/form-data"> 
+            <div>
+                <label>Image 1</label>
+                <input type="file" id="image1"name="image1">
+            </div>
+            <button type="submit" name="upload" id="upload" value="ok">Upload</button>
+        </form>  
+    </div>
+    <div>
+        <form action="/post/image2" method="post" enctype="multipart/form-data"> 
+            <div>
+                <label>Image 2</label>
+                <input type="file" id="image2"name="image2">
+            </div>
+            <button type="submit" name="upload" id="upload" value="ok">Upload</button>
+        </form>  
+    </div>  
+    
+
+<%- include('partials/footer') %>
+
+  </body>
+  </html>

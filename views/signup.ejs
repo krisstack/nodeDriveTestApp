@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Provinence Driving Test/Sign UP</title>
+  
+</head>
+<body>
+  <div style="background-color:powderblue ; width: auto;text-align: center;color:r;">
+    <header>
+        <h1>WELCOME TO ONTARIO DRIVING TEST CENTRE</h1>
+        <%- include('partials/navbar') %>
+        <nav>
+          <a href="/login">Login</a>
+          <a href="/signup">Sign Up</a>
+        </nav>
+    </header>
+</div>
+<div style="background-color: burlywood;width:auto;height:auto;padding-top:20px;padding-bottom:30px ;">
+  <h1>  Sign Up </h1>
+  <form action="/register" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="users">User Type</label>
+        <select id="user" name="usertype">
+          <option value="driver">Driver</option>
+          <option value="Examiner">Examiner</option>
+          <option value="Admin">Admin</option>
+          
+        </select>
+      </div>
+    <div >
+      <div >
+        <label>User Name</label>
+        <input type="text"  placeholder="User Name" id="username" name="username" value="<%= username %>">              
+      </div>
+    </div>
+    <div >
+      <div>
+        <label>Password</label>
+        <input type="password" id="password" name="password" value="<%= password %>"">              
+      </div>
+    </div>                   
+    <br>          
+    <button type="submit" >Sign UP</button>
+  </form>
+</div>  
+
+<%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Provinence Driving Test</title>
+
+</head>
+
+<body>
+
+
+  <div style="background-color:powderblue ; width: auto;text-align: center;color:r;">
+    <header>
+      <h1>WELCOME TO ONTARIO DRIVING TEST CENTRE</h1>
+      <%- include('partials/navbar') %>
+    </header>
+  </div>
+
+    <div style="background-color: burlywood;">
+      <form id="g_form" action="/g" method="get">
+        <div>
+          <label for="userid">User Id :</label>
+          <input type="text" name="userid" id="userid">
+        </div>
+
+        <div>
+          <button type="submit" >Submit</button>
+        </div>
+
+      </form>
+    </div>
+    <div>
+    <%if(show) { %>
+      
+    <form action="<%=`/${show._id}/update?_method=PUT`%>" method="post" enctype="multipart/form-data">
+
+    
+    <div style="display:flexbox;">
+      
+   
+      <label>First Name :-</label>
+      <input readonly type="text"  name="fName" value="<%=show.fName %>" /></br>
+      <label>Last Name :-</label>
+      <input readonly type="text"  name="lName" value="<%=show.lName %>" /></br>
+      <label>Address :-</label>
+      <input type="text"  name="address" value="<%=show.address %>" /></br>
+      <label>Licence Number :-</label>
+      <input readonly type="text"  name="lNum" value="<%=show.lNum %>" /></br>
+      <label >DOB :-</label>
+      <input readonly type="text"  name="dob" value="<%=show.dob%>" /></br>
+      <label>Car Details :-</label>
+      <input type="text"  name="carDetails" value="<%=show.carDetails %>" /></br>
+     
+     
+    </div>
+    <button type="submit" name="update" id="update">Update</button>
+      
+  </form>
+  <% } %>
+</div>
+</body>
+</html>

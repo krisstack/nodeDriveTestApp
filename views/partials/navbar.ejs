@@ -1,0 +1,17 @@
+
+
+
+<div style="display:flex;justify-content: center;word-spacing:200px;">
+<nav>
+    
+    <a href="/">Dashboard</a>
+    <a href="/login">Login</a>
+    <% if(usertype == 'driver'){ %>
+    <a href="/g2">G2</a>
+    <a href="/g">G</a>
+    <% } %>
+    <% if(usertype == 'Admin'){ %>
+     <a href="/slotAdmin">appoinment</a>
+    <% } %>
+</nav>
+</div>
