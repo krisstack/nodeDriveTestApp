@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const app = new express();
@@ -12,14 +13,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const fileupload = require("express-fileupload");
 app.use(fileupload());
-const port = process.env.PORT || 3000;
+
+const PORT = process.env.PORT || 3000;
+
 mongoose.connect(
   "mongodb+srv://Krishnaraj3675:Arathy686@cluster0.chttd.mongodb.net/drivingtest?retryWrites=true&w=majority",
   { useNewUrlParser: true }
 );
 
-app.listen(port, () => {
-  console.log("App listening on port 3000");
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
 });
 
 app.use(
